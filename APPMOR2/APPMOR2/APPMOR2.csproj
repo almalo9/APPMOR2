@@ -21,12 +21,10 @@
     <None Remove="Fonts\AngulosTiro2.xlsx" />
     <None Remove="Fonts\BlackOpsOne.ttf" />
     <None Remove="Fonts\glyphicons-halflings-regular.ttf" />
-    <None Remove="Help.pdf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Fonts\AngulosTiro2.xlsx" />
-    <EmbeddedResource Include="Fonts\Help.pdf" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,10 +1,7 @@
-﻿using APPMOR2.MainViewModels;
-using Syncfusion.XlsIO;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Reflection;
-using System.Text;
+using Syncfusion.XlsIO;
 
 namespace APPMOR2
 {
@@ -47,20 +44,20 @@ namespace APPMOR2
             double milesimas = worksheet.Range[cell].Number;
             double milesimasPost = worksheet.Range[cellPost].Number;
             double Aux1 = (milesimas - milesimasPost) / 100;
-            if (hoja == 0) 
-            { 
-            if (line == 10) { Aux1 = 0.377; }
-            else if (line == 20) { Aux1 = 0.26; }
-            else if (line == 30) { Aux1 = 0.185; }
-            else if (line == 40) { Aux1 = 0.146; }
-            else if (line == 55) { Aux1 = 0.156; }
-            else if (line == 65) { Aux1 = 0.147; }
-            double correccion = Aux1 * (getDistTiro() - (Math.Floor(getDistTiro() / 100)) * 100);
-            if (getDistTiro() < 400 || getDistTiro() >= 7800) { milesimas = 0; correccion = 0; cellC = "C1";cellT = "E1"; }//distancias fuera del valor
-            setC(worksheet.Range[cellC].Number);
-            setTEspoleta(worksheet.Range[cellT].Number);
-            setATiro(Math.Round(milesimas - correccion));
-            angulosTiro.Close();
+            if (hoja == 0)
+            {
+                if (line == 10) { Aux1 = 0.377; }
+                else if (line == 20) { Aux1 = 0.26; }
+                else if (line == 30) { Aux1 = 0.185; }
+                else if (line == 40) { Aux1 = 0.146; }
+                else if (line == 55) { Aux1 = 0.156; }
+                else if (line == 65) { Aux1 = 0.147; }
+                double correccion = Aux1 * (getDistTiro() - (Math.Floor(getDistTiro() / 100)) * 100);
+                if (getDistTiro() < 400 || getDistTiro() >= 7800) { milesimas = 0; correccion = 0; cellC = "C1"; cellT = "E1"; }//distancias fuera del valor
+                setC(worksheet.Range[cellC].Number);
+                setTEspoleta(worksheet.Range[cellT].Number);
+                setATiro(Math.Round(milesimas - correccion));
+                angulosTiro.Close();
             }
             if (hoja == 1)
             {
@@ -90,7 +87,7 @@ namespace APPMOR2
                 setATiro(Math.Round(milesimas - correccion));
                 angulosTiro.Close();
             }
-            if (hoja==3)
+            if (hoja == 3)
             {
                 if (line == 11) { Aux1 = 1.09; }
                 if (line == 20) { Aux1 = 0.37; }
@@ -105,7 +102,7 @@ namespace APPMOR2
                 setATiro(Math.Round(milesimas - correccion));
                 angulosTiro.Close();
             }
-            if (hoja == 4) 
+            if (hoja == 4)
             {
                 if (line == 9) { Aux1 = 0.88; }
                 if (line == 18) { Aux1 = 0.43; }
@@ -119,7 +116,7 @@ namespace APPMOR2
                 setATiro(Math.Round(milesimas - correccion));
                 angulosTiro.Close();
             }
-            if (hoja == 5) 
+            if (hoja == 5)
             {
                 if (line == 11) { Aux1 = 0.68; }
                 if (line == 21) { Aux1 = 0.38; }
@@ -133,7 +130,7 @@ namespace APPMOR2
                 setATiro(Math.Round(milesimas - correccion));
                 angulosTiro.Close();
             }
-            if (hoja == 6) 
+            if (hoja == 6)
             {
                 if (line == 5) { Aux1 = 1.15; }
                 if (line == 14) { Aux1 = 0.35; }
