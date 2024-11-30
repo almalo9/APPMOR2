@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.InstruccionPage"
+             BackgroundImage="background"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             IconImageSource="Instruccion36">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Instruccion}"
+            Padding="20,20"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                VerticalOptions="StartAndExpand">
+                <Label 
+                Padding="0,0,0,50"
+                FontSize="Large"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HorizontalOptions="CenterAndExpand"
+                Text="INSTRUCCIÓN"
+                TextColor="White"
+                VerticalOptions="Start" 
+                 />
+                <Entry
+                Placeholder="Introduzca Coordenada X del Objetivo"
+                PlaceholderColor="White"
+                Keyboard="Numeric"
+                Text="{Binding CoordX, Mode=TwoWay}"
+                TextColor="White"
+                MaxLength="5"
+                />
+                <Entry
+                Placeholder="Introduzca Coordenada Y del Objetivo"
+                PlaceholderColor="White"
+                Keyboard="Numeric"
+                Text="{Binding CoordY, Mode=TwoWay}"
+                TextColor="White"
+                MaxLength="5"
+                />
+                <Button
+                BackgroundColor="DarkGreen"
+                FontFamily="{StaticResource BlackOpsOne}"
+                Command="{Binding InstruccionCalcular}"
+                CornerRadius="40"
+                HeightRequest="40"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                HorizontalOptions="Center"
+                Text="CALCULAR"
+                WidthRequest="150"
+                />
+                <Label 
+                Padding="0,30"
+                FontSize="Default"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding InstruccionCoordenadas, Mode=TwoWay}"
+                TextColor="White"
+                VerticalOptions="Start" 
+                 />
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="End">
+                <Button
+                BackgroundColor="DarkGreen"
+                FontFamily="{StaticResource BlackOpsOne}"
+                Command="{Binding Help}"
+                CornerRadius="40"
+                HeightRequest="40"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Text="Ayuda"
+                WidthRequest="80"
+                />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

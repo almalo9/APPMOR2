@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.GpsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="background"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             IconImageSource="Gps36">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Gps}"
+            VerticalOptions="Center">
+            <Label 
+                Text="SU POSICIÓN GPS EN WGS 84 ES:"
+                FontFamily="{StaticResource BlackOpsOne}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label 
+                Text="{Binding EjeX, Mode=TwoWay}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label 
+                Text="{Binding EjeY, Mode=TwoWay}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label 
+                Text="{Binding EjeZ, Mode=TwoWay}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button      
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="DarkGreen"
+                Command="{Binding LocationCommand}"
+                CornerRadius="40"
+                HeightRequest="40"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HorizontalOptions="Center"   
+                Text="VER COORDENADAS"   
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="200"
+                MinimumHeightRequest="70">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

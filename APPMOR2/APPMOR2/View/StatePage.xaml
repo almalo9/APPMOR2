@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.StatePage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="background"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             IconImageSource="Jerarquia36">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding State}"
+            Padding="10" 
+            HorizontalOptions="FillAndExpand">
+            <Label 
+                Padding=" 0,0,0,30"
+                Text="{Binding User, Mode=TwoWay}"
+                FontFamily="{StaticResource BlackOpsOne}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" />
+
+            <Picker
+                Title="Seleccione una unidad"
+                TitleColor="White"
+                TextColor="White"
+                FontFamily="{StaticResource BlackOpsOne}"
+                ItemsSource="{Binding Unidades}"
+                ItemDisplayBinding="{Binding indicativo}"
+                SelectedItem="{Binding SelectedUnidad}"
+                SelectedIndexChanged="Picker_SelectedIndexChanged"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Picker>
+
+            <Grid
+                Padding=" 0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Grid.Row ="0"
+                    Grid.Column="0"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    FontAttributes="Bold"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding AddUnidad}"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    BorderColor="White"
+                    BorderWidth="3"
+                    TextColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Modificar Indicativo"
+                    VerticalOptions="Start" 
+                />
+                <Button 
+                    Grid.Row ="0"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    FontAttributes="Bold"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding AddCoordenadas}"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    BorderColor="White"
+                    BorderWidth="3"
+                    TextColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Modificar Coordenadas"
+                    VerticalOptions="Start" 
+                />
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    FontAttributes="Bold"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding AddDeriva}"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    BorderColor="White"
+                    BorderWidth="3"
+                    TextColor="White"
+                    HorizontalOptions="Fill"
+                    Text="Deriva"
+                    VerticalOptions="Start" 
+                />
+                <Button 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    FontAttributes="Bold"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding UtilizarDatos}"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    BorderColor="White"
+                    BorderWidth="3"
+                    TextColor="White"
+                    HorizontalOptions="Fill"
+                    Text="Utilizar Datos"
+                    VerticalOptions="Start" 
+                />
+            </Grid>
+            <Grid
+                Padding=" 0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Grid.Row ="0"
+                    Grid.Column="0"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    FontAttributes="Bold"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding AddTipo}"
+                    CornerRadius="50"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    BorderColor="White"
+                    BorderWidth="3"
+                    TextColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Tipo de Arma"
+                    VerticalOptions="Center" 
+                />
+
+            </Grid>
+            <Label
+                Text="{Binding Nombre}"
+                TextColor="White"               
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Small"
+                FontAttributes="Bold"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="{Binding UnidadCoordenadas}"
+                    TextColor="White"
+                    FontSize="Small"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="{Binding Objetivo1Coordenadas}"
+                    TextColor="White"
+                    FontSize="Small"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{Binding ImpactoCoordenadas}"
+                    TextColor="White"
+                    FontSize="Small"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="{Binding DatosDeTiro}"
+                    TextColor="White"
+                    FontSize="Small"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+
+
+            </Grid>
+            <Button      
+                BackgroundColor="DarkGreen"
+                CornerRadius="60"
+                BorderColor="White"
+                Command="{Binding Corregir}"
+                TextColor="White"
+                BorderWidth="3" 
+                FontSize="12"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HeightRequest="60"
+                HorizontalOptions="CenterAndExpand"
+                Text="Corregir Datos"   
+                WidthRequest="130"
+                >
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.InicioPage" 
+             BackgroundImage="imageInicio"
+             BindingContext="{Binding Main, Source= {StaticResource Locator}}" 
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             >
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding Inicio}"
+            Padding="0,20"
+            VerticalOptions="Fill"
+            HorizontalOptions="Center">
+            <Label
+                    FontSize="Large"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"   
+                    Text="APPMOR 2.0"   
+                    TextColor="White"
+                    VerticalOptions="Center">
+            </Label>
+            <Button                
+                BackgroundColor="DarkGreen"
+                Command="{Binding EmpezarCommand}"
+                CornerRadius="40" 
+                FontSize="Body"
+                FontAttributes="None"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HeightRequest="40"
+                HorizontalOptions="Center"   
+                Text="Empezar"
+                BorderColor="White"
+                BorderWidth="3"
+                Opacity=".75"
+                TextColor="White"
+                VerticalOptions="EndAndExpand" 
+                WidthRequest="130">
+            </Button>
+            <Grid 
+                  HorizontalOptions="Center"
+                  VerticalOptions="End"
+                    >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="End"
+                    Source="princesa"
+                    TranslationX="-30"
+                    WidthRequest="50">
+                </Image>
+                <Label
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="BIP Princesa I/2"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center">
+                </Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.ObservadorPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="background"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             IconImageSource="Observador36">
+    <ScrollView>
+        <StackLayout
+            Padding="5,30,5,100"
+            BindingContext="{Binding Observador}">
+            <Label
+                Padding="0,0,0,10" 
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Large"
+                Text="OBSERVADOR"
+                TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"/>
+            <Label    
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Medium"
+                Text="POSICIÓN:"
+                TextColor="White"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"/>
+            <Label
+                FontSize="12"   
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="30"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding CoordX}"
+                TextColor="White"    
+                VerticalOptions="Start"/>
+            <Grid
+                Padding="0,0,0,0"
+                HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label    
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Small"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                Text="OLO:"
+                TextColor="White"
+                VerticalOptions="Center" 
+                />
+                <Label
+                FontSize="12"   
+                Grid.Row="1"
+                Grid.Column="0"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                Text="{Binding Olo}"
+                TextColor="White"    
+                VerticalOptions="Center"  
+                />
+                <Label 
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Small"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="30"
+                Text="DISTANCIA:"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <Label 
+                FontSize="12"
+                Grid.Row="1"
+                Grid.Column="1"
+                HeightRequest="30"
+                Text="{Binding Distancia}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <Label 
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Small"
+                Grid.Row="0"
+                Grid.Column="2"
+                HeightRequest="30"
+                Text="SITUACIÓN:"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+                <Label
+                FontSize="12"
+                Grid.Row="1"
+                Grid.Column="2"
+                HeightRequest="30"
+                Text="{Binding Situacion}"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            </Grid>
+            <Grid
+                Padding="0,0,0,0"
+                HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    BackgroundColor="DarkGreen"
+                    MinimumHeightRequest="60"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3" 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Text="INTRODUCIR POSICIÓN"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Command="{Binding PosicionCommand}"/>
+                <Button 
+                    BackgroundColor="DarkGreen"
+                    MinimumHeightRequest="60"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3" 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    Text="INTRODUCIR OLO"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Command="{Binding OloCommand}"/>
+            </Grid>
+            <Button          
+                BackgroundColor="DarkGreen"
+                MinimumHeightRequest="60"
+                CornerRadius="60"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                Command="{Binding CalcularPosicion}" 
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                Text="CALCULAR POSICIÓN"/>
+            <Button          
+                BackgroundColor="DarkGreen"
+                MinimumHeightRequest="60"
+                CornerRadius="60"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                Command="{Binding EnviarObjetivo}"
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HorizontalOptions="Fill"
+                IsVisible="{Binding Visible}"
+                VerticalOptions="Fill"
+                Text="GUARDAR OBJETIVO EN PIEZA"/>
+            <Button          
+                BackgroundColor="DarkGreen"
+                MinimumHeightRequest="60"
+                CornerRadius="60"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                Command="{Binding EnviarImpacto}"
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HorizontalOptions="Fill"
+                IsVisible="{Binding Visible}"
+                VerticalOptions="Fill"
+                Text="GUARDAR IMPACTO EN PIEZA"/>
+            <Label
+                Padding="0,10"
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Medium"   
+                Text="LA POSICIÓN ES:"
+                TextColor="White"    
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                IsVisible="{Binding Visible}"/>
+            <Label 
+                FontSize="Medium"   
+                IsVisible="{Binding Visible}"
+                HorizontalOptions="Center"
+                Text="{Binding EnyX}"
+                TextColor="White"    
+                VerticalOptions="CenterAndExpand" 
+                />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

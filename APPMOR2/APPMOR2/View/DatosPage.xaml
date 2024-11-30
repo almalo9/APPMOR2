@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="APPMOR2.View.DatosPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundImage="background"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="True"
+             IconImageSource="Calculadora36">
+    <ScrollView>
+        <StackLayout
+            BindingContext="{Binding Datos}"
+            VerticalOptions="Start"
+            Padding="0">
+            <Picker
+                Title="SELECCIONAR MORTERO"
+                TitleColor="White"
+                TextColor="White"
+                FontFamily="{StaticResource BlackOpsOne}"
+                ItemsSource="{Binding Tipos}"
+                ItemDisplayBinding="{Binding Tipo}"
+                SelectedItem="{Binding SelectedTipo}"
+                HorizontalOptions="End"
+                VerticalOptions="Center">
+            </Picker>
+            <Grid 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="30,5,30,5"
+                    >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="PIEZA: "
+                    TextColor="White"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    FontAttributes="Bold"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    FontSize="12"
+                    Text="{Binding Directriz, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="OBJETIVO: "
+                    TextColor="White"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding Objetivo, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="DERIVA DE VIGILANCIA: "
+                    TextColor="White"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding DerivaVigilancia, Mode=TwoWay}"
+                    IsVisible="{Binding IsVisible2, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center">
+                </Label>
+
+            </Grid>
+            <Grid
+                Padding="30,0,30,0">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="DATOS DE TIRO: "
+                    TextColor="White"
+                    IsVisible="{Binding IsVisible, Mode=TwoWay}"
+                    VerticalOptions="Center">
+                </Label>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding Tiro, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center"
+                    IsVisible="{Binding IsVisible1, Mode=TwoWay}">
+                </Label>
+            </Grid>
+            <Grid 
+                  HorizontalOptions="Center"
+                  VerticalOptions="End"
+                Padding="15,15,15,15"
+                    >
+                <Button      
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding CoordPiezaCommand}"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3"  
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"   
+                    Text="COORDENADAS PIEZA"   
+                    VerticalOptions="EndAndExpand" 
+                    WidthRequest="130"
+                >
+                </Button>
+                <Button      
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding CoordObjCommand}"
+                    CornerRadius="60"
+                    HeightRequest="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3"  
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HorizontalOptions="Center"   
+                    Text="COORDENADAS OBJETIVO"   
+                    VerticalOptions="EndAndExpand" 
+                    WidthRequest="130">
+                </Button>
+                <Button      
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding DerivaVCommand}"
+                    CornerRadius="60" 
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3" 
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}" 
+                    HeightRequest="60"
+                    HorizontalOptions="Center"   
+                    Text="DERIVA VIGILANCIA"   
+                    VerticalOptions="EndAndExpand" 
+                    WidthRequest="130">
+                </Button>
+                <Button      
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding CalcularCommand}"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3" 
+                    FontSize="12"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"   
+                    Text="CALCULAR"   
+                    WidthRequest="130">
+                </Button>
+            </Grid>
+            <Button      
+                BackgroundColor="DarkGreen"
+                Command="{Binding Guardar}"
+                CornerRadius="60"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3" 
+                FontSize="12"
+                FontFamily="{StaticResource BlackOpsOne}"
+                IsVisible="{Binding IsVisible, Mode=TwoWay}"
+                HeightRequest="60"
+                HorizontalOptions="CenterAndExpand"   
+                Text="GUARDAR DATOS"   
+                WidthRequest="130">
+            </Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
