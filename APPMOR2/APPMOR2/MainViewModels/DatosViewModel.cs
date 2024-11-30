@@ -25,9 +25,11 @@ namespace APPMOR2.MainViewModels
         private string directriz;
         private string objetivo;
         private string tiro;
+        // TODO: Nueva variable "tiroConViento"
         private bool isToggled;
         private Coordenadas coordObjetivo; //Objeto que representa las coordenadas del objetivo
         private DatosTiro DatosDeTiro; //Objeto que representa los datos de tiro
+        private DatosTiro DatosDeTiroConViento; //Objeto que representa los datos de tiro con corrección de viento
         private Unidad unidadBase; //objeto que representa la unidad elegida
         private Coordenadas coordDirectriz; //objeto que representa las coordenadas de la pieza
         public List<Mortero> tipos; //lista de tipos de mortero
@@ -69,6 +71,7 @@ namespace APPMOR2.MainViewModels
             get{ return this.tiro; }
             set { SetValue(ref this.tiro, value); }
         }
+        // TODO: Nueva variable "TiroConViento"
         public bool IsToggled 
         {
             get { return this.isToggled; }
@@ -228,6 +231,7 @@ namespace APPMOR2.MainViewModels
         {
             this.IsVisible = false;
             this.IsVisible1 = false;
+
             Coordenadas CoorObjetivo = new Coordenadas(0,0,0);
             try 
             { 
@@ -376,6 +380,13 @@ namespace APPMOR2.MainViewModels
             { await Application.Current.MainPage.DisplayAlert("Error", "No ha seleccionado ningún tipo de mortero","Aceptar"); }
         }
         #endregion
+
+        // TODO: Nueva región para la acción "CorregirViento"
+
+        // Dentro de la función "Corregido" o como la quieras llamar:
+        // 1º. Pides azimut y nudos (fíjate en cómo lo hace en CoordenadaObjetivo())
+        // 2º. Calculas los DatosDeTiroConViento: setDatosConViento(this.DatosDeTiro, azimut, nudos)
+        // 3º. Muestras los datos: actualizar variable TiroConViento haciendo lo mismo que en MostrarDatos()
 
         #endregion
     }

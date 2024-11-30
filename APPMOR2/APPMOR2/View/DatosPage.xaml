@@ -126,6 +126,7 @@
                     VerticalOptions="Center"
                     IsVisible="{Binding IsVisible1, Mode=TwoWay}">
                 </Label>
+                <!-- TODO: Añadir label y datos "DATOS CON CORRECCIÓN DE VIENTO" -> Binding con la variable "TiroConViento" de "DatosViewModel.cs" -->
             </Grid>
             <Grid 
                   HorizontalOptions="Center"
@@ -216,7 +217,7 @@
                 Text="GUARDAR DATOS"   
                 WidthRequest="130">
             </Button>
-
+            <!-- TODO: Añadir botón "Correción Viento" -> Binding con la función "CorregirViento" de "DatosViewModel.cs" -->
         </StackLayout>
     </ScrollView>
 </ContentPage>

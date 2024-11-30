@@ -35,6 +35,13 @@ namespace APPMOR2
         { this.coordenada = coord; }
         public void setDatos(DatosTiro data)
         { this.datos = data; }
+
+        // TODO: Rellenar datos con corrección de viento
+        public void setDatosConViento(DatosTiro data, int azimut, int nudo){ 
+            this.datos = data; 
+        }
+
+
         public void setDatos(int valor)
         {this.value = valor;}
         public void setCoorObj(Coordenadas obj) { this.coordenadaObj = obj;}

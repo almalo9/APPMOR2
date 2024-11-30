@@ -12,6 +12,8 @@ namespace APPMOR2
         private double c = 0;
         private double distTiro = 0;
         private double tEspoleta = 0; //falta definir obtener el tiempo de espoleta
+        private int capaViento = 0;
+
         public DatosTiro(Coordenadas coordenada1, Coordenadas coordenada2, double deriva, int hoja)
         {//set a la deriva
             if (coordenada1.calcularRumbo(coordenada2) <= deriva)
@@ -44,6 +46,9 @@ namespace APPMOR2
             double milesimas = worksheet.Range[cell].Number;
             double milesimasPost = worksheet.Range[cellPost].Number;
             double Aux1 = (milesimas - milesimasPost) / 100;
+
+            // TODO: Leer del Excel el valor EQ_ZZ -> meter en capaViento
+
             if (hoja == 0)
             {
                 if (line == 10) { Aux1 = 0.377; }
@@ -150,6 +155,8 @@ namespace APPMOR2
             this.dTiro = derivaTiro;
             this.c = carga;
         }
+
+        // TODO: get y set capaViento
         public void setATiro(double anguloTiro) { this.aTiro = anguloTiro; }
         public void setDTiro(double derivaTiro) { this.dTiro = derivaTiro; }
         public void setC(double carga) { this.c = carga; }
