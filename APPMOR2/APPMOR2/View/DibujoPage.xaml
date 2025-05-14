@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="APPMOR2.View.DibujoPage"
@@ -15,7 +15,6 @@
             <StackLayout HeightRequest="300" WidthRequest="300">
 
                 <Path x:Name="geo" Stroke="Black" StrokeThickness="2" Rotation="-90">
-
                 </Path>
             </StackLayout>
             <Button HeightRequest="50" WidthRequest="100" Text="Dibuja" Clicked="Button_Clicked"></Button>

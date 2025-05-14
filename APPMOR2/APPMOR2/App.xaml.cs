@@ -1,18 +1,16 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
+﻿using Xamarin.Forms;
 
 namespace APPMOR2
 {
     using View;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage (new InicioPage());
+            MainPage = new NavigationPage(new InicioPage());
         }
 
         protected override void OnStart()

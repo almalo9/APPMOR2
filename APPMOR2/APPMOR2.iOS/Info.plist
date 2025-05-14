@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>APPMOR2</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.APPMOR2</string>
+	<string>com.magan.APPMOR2</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -36,9 +36,9 @@
 	<string>Fill in a reason why your app needs access to location.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.5</string>
-  <key>UIAppFonts</key>
-  <array>
-    <string>BlackOpsOne.ttf</string>
-  </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BlackOpsOne.ttf</string>
+	</array>
 </dict>
 </plist>

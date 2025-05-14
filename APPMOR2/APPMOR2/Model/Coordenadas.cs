@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace APPMOR2
 {
@@ -11,35 +9,58 @@ namespace APPMOR2
         private double z = 0;
         private double xAux;
         private double yAux;
+
         public Coordenadas()
         {
             this.x = 0;
             this.y = 0;
             this.z = 0;
         }
+
         public Coordenadas(double coordenadax, double coordenaday)
         {
             this.x = coordenadax;
             this.y = coordenaday;
             this.z = 0;
         }
+
         public Coordenadas(double coordenadax, double coordenaday, double coordenadaz)
         {
             this.x = coordenadax;
             this.y = coordenaday;
             this.z = coordenadaz;
-
         }
-        public void setX(double CoordAux) { this.x = CoordAux; }
-        public void setY(double CoordAux) { this.y = CoordAux; }
-        public void setZ(double CoordAux) { this.z = CoordAux; }
-        public void setYAux(double CoordAux) { this.yAux = CoordAux; }
-        public void setXAux(double CoordAux) { this.xAux = CoordAux; }
-        public double getX() { return x; }
-        public double getY() { return y; }
-        public double getZ() { return z; }
-        public double getXAux() { return xAux; }
-        public double getYAux() { return yAux; }
+
+        public void setX(double CoordAux)
+        { this.x = CoordAux; }
+
+        public void setY(double CoordAux)
+        { this.y = CoordAux; }
+
+        public void setZ(double CoordAux)
+        { this.z = CoordAux; }
+
+        public void setYAux(double CoordAux)
+        { this.yAux = CoordAux; }
+
+        public void setXAux(double CoordAux)
+        { this.xAux = CoordAux; }
+
+        public double getX()
+        { return x; }
+
+        public double getY()
+        { return y; }
+
+        public double getZ()
+        { return z; }
+
+        public double getXAux()
+        { return xAux; }
+
+        public double getYAux()
+        { return yAux; }
+
         public double calcularDistancia(Coordenadas Coordenada2)
         {
             double difx;
@@ -53,8 +74,8 @@ namespace APPMOR2
             difx = this.x - Coordenada2.getX();
             dify = this.y - Coordenada2.getY();
             return Math.Sqrt(Math.Pow(difx, 2) + Math.Pow(dify, 2));
-
         }
+
         public double calcularRumbo(Coordenadas Coordenada2)
         {
             double Rumbo = 0;
@@ -67,6 +88,7 @@ namespace APPMOR2
             Rumbo = Math.Round(Rumbo);
             return Rumbo;
         }
+
         public void latLongToWGS84()
         {
             double semiEjeMayor = 6378137;
@@ -96,9 +118,6 @@ namespace APPMOR2
             setX(Math.Round(xi * ni * (1 + (zeta / 3)) + 500000));
             setY(Math.Round(Bfi + (eta * ni * (1 + zeta))));
             setZ(Math.Round(getZ()));
-
-
-
         }
     }
 }

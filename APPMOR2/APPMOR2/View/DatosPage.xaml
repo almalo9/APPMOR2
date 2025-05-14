@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="APPMOR2.View.DatosPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -10,113 +10,175 @@
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="True"
              IconImageSource="Calculadora36">
-    <ScrollView>
-        <StackLayout
+    <Grid>
+        <ScrollView>
+            <StackLayout
             BindingContext="{Binding Datos}"
             VerticalOptions="Start"
             Padding="0">
-            <Picker
-                Title="SELECCIONAR MORTERO"
-                TitleColor="White"
-                TextColor="White"
-                FontFamily="{StaticResource BlackOpsOne}"
-                ItemsSource="{Binding Tipos}"
-                ItemDisplayBinding="{Binding Tipo}"
-                SelectedItem="{Binding SelectedTipo}"
-                HorizontalOptions="End"
-                VerticalOptions="Center">
-            </Picker>
-            <Grid 
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Padding="30,5,30,5"
-                    >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
+                <Grid 
+                           Padding="2,10,5,0"
+      ColumnSpacing="2"
+      VerticalOptions="Center"
+      HorizontalOptions="FillAndExpand">
 
-                <Label
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <!-- Label Declinación -->
+                        <ColumnDefinition Width="40" />
+                        <!-- Entry -->
+                        <ColumnDefinition Width="*" />
+                        <!-- Picker -->
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Label Declinación -->
+                    <Label Grid.Column="0"
+                           Padding="23,0,0,0"
+           Text="DECLINACIÓN UTM:"
+           TextColor="White"
+           FontSize="Micro"
+           FontFamily="{StaticResource BlackOpsOne}"
+           VerticalOptions="Center"
+           VerticalTextAlignment="Center" />
+
+                    <!-- Entry Declinación -->
+                    <Entry Grid.Column="1"
+           Text="{Binding DeclinacionUTM, Mode=TwoWay}"
+           Keyboard="Numeric"
+           MaxLength="3"
+           TextColor="White"
+           FontSize="Small"
+           HorizontalTextAlignment="Center"
+           Placeholder="0"
+           PlaceholderColor="White"
+           VerticalOptions="Center"
+                Margin="7,0,0,0"
+
+       Focused="EntryDeclinacion_Focused"
+       Unfocused="EntryDeclinacion_Unfocused" />
+
+                    <!-- Picker -->
+                    <Picker Grid.Column="2"
+            Title="SELECCIONAR MORTERO"
+            TitleColor="White"
+            TextColor="White"
+            FontSize="Small"
+            FontFamily="{StaticResource BlackOpsOne}"
+            ItemsSource="{Binding Tipos}"
+            ItemDisplayBinding="{Binding Tipo}"
+            SelectedItem="{Binding SelectedTipo}"
+            SelectedIndexChanged="Picker_SelectedIndexChanged"
+            VerticalOptions="Center"
+            HorizontalTextAlignment="Center"
+            HorizontalOptions="FillAndExpand"
+                Margin="10,0,0,0"/>
+                </Grid>
+                <Grid
+                Padding="25,5,30,0">
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions> 
+                    <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalOptions="Start"
-                    FontSize="12"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
                     Text="PIEZA: "
                     TextColor="White"
-                    VerticalOptions="Center">
-                </Label>
-                <Label
+                    VerticalOptions="Center"
+                Margin="0,0,0,8">
+                    </Label>
+                    <Label
                     FontAttributes="Bold"
                     Grid.Row="0"
                     Grid.Column="1"
                     HorizontalOptions="Start"
-                    FontSize="12"
+                    FontSize="Micro"
                     Text="{Binding Directriz, Mode=TwoWay}"
+                    IsVisible="{Binding IsVisiblePieza, Mode=TwoWay}"
                     TextColor="White"
-                    TranslationX="-5"
-                    VerticalOptions="Center">
-                </Label>
-                <Label
+                    VerticalOptions="Center"
+                Margin="0,0,0,8"
+                TranslationX="20">
+                    </Label>
+                    <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     HorizontalOptions="Start"
-                    FontSize="12"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
                     Text="OBJETIVO: "
                     TextColor="White"
-                    VerticalOptions="Center">
-                </Label>
-                <Label
+                    VerticalOptions="Center"
+                Margin="0,0,0,8">
+                    </Label>
+                    <Label
                     FontAttributes="Bold"
-                    FontSize="12"
+                    FontSize="Micro"
                     Grid.Row="1"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     Text="{Binding Objetivo, Mode=TwoWay}"
+                    IsVisible="{Binding IsVisibleObjetivo, Mode=TwoWay}"
                     TextColor="White"
-                    TranslationX="-5"
-                    VerticalOptions="Center">
-                </Label>
-                <Label
+                    VerticalOptions="Center"
+                Margin="0,0,0,8"
+                TranslationX="20">
+                    </Label>
+                    <Label
                     Grid.Row="2"
                     Grid.Column="0"
                     HorizontalOptions="Start"
-                    FontSize="12"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
-                    Text="DERIVA DE VIGILANCIA: "
+                    Text="LÍNEA REFERENCIA: "
                     TextColor="White"
-                    VerticalOptions="Center">
-                </Label>
-                <Label
-                    FontSize="12"
+                    VerticalOptions="Center"
+                Margin="0,0,0,0">
+                    </Label>
+                    <Label
+                    FontAttributes="Bold"
+                    FontSize="Micro"
                     Grid.Row="2"
                     Grid.Column="1"
                     HorizontalOptions="Start"
                     Text="{Binding DerivaVigilancia, Mode=TwoWay}"
-                    IsVisible="{Binding IsVisible2, Mode=TwoWay}"
+                    IsVisible="{Binding IsVisibleDeriva, Mode=TwoWay}"
                     TextColor="White"
-                    TranslationX="-5"
-                    VerticalOptions="Center">
-                </Label>
-
-            </Grid>
-            <Grid
-                Padding="30,0,30,0">
-                <Label
+                    VerticalOptions="Center"
+                Margin="0,0,0,0"
+                TranslationX="20">
+                    </Label>
+                </Grid>
+                <Grid
+                Padding="25,0,30,0">
+                    <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalOptions="Start"
-                    FontSize="12"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
                     Text="DATOS DE TIRO: "
                     TextColor="White"
-                    IsVisible="{Binding IsVisible, Mode=TwoWay}"
+                    IsVisible="{Binding IsVisibleDatosTiro, Mode=TwoWay}"
                     VerticalOptions="Center">
-                </Label>
-                <Label
+                    </Label>
+                    <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="DATOS DE TIRO INICIALES: "
+                    TextColor="DarkGray"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Label
                     FontAttributes="Bold"
-                    FontSize="12"
+                    FontSize="Micro"
                     Grid.Row="0"
                     Grid.Column="1"
                     HorizontalOptions="Start"
@@ -124,16 +186,74 @@
                     TextColor="White"
                     TranslationX="-5"
                     VerticalOptions="Center"
-                    IsVisible="{Binding IsVisible1, Mode=TwoWay}">
-                </Label>
-                <!-- TODO: Añadir label y datos "DATOS CON CORRECCIÓN DE VIENTO" -> Binding con la variable "TiroConViento" de "DatosViewModel.cs" -->
-            </Grid>
-            <Grid 
+                    IsVisible="{Binding IsVisibleDatosTiro, Mode=TwoWay}">
+                    </Label>
+                    <Label
+                    FontAttributes="Bold"
+                    FontSize="Micro"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding Tiro, Mode=TwoWay}"
+                    TextColor="DarkGray"
+                    TranslationX="-5"
+                    VerticalOptions="Center"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}">
+                    </Label>
+                </Grid>
+                <Grid
+                Padding="25,0,30,0">
+                    <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="VIENTO: "
+                    TextColor="White"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Label
+                    FontAttributes="Bold"
+                    FontSize="Micro"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding Viento, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}">
+                    </Label>
+                    <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    Text="DATOS DE TIRO CORREGIDOS: "
+                    TextColor="White"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}"
+                    VerticalOptions="Center">
+                    </Label>
+                    <Label
+                    FontAttributes="Bold"
+                    FontSize="Micro"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Text="{Binding TiroCorregido, Mode=TwoWay}"
+                    TextColor="White"
+                    TranslationX="-5"
+                    VerticalOptions="Center"
+                    IsVisible="{Binding IsVisibleViento, Mode=TwoWay}">
+                    </Label>
+                </Grid>
+                <Grid
                   HorizontalOptions="Center"
-                  VerticalOptions="End"
-                Padding="15,15,15,15"
-                    >
-                <Button      
+                Padding="10,10,10,10">
+                    <Button
                     Grid.Row="0"
                     Grid.Column="0"
                     BackgroundColor="DarkGreen"
@@ -141,83 +261,177 @@
                     CornerRadius="60"
                     BorderColor="White"
                     TextColor="White"
-                    BorderWidth="3"  
-                    FontSize="12"
+                    BorderWidth="3"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
-                    HeightRequest="60"
-                    HorizontalOptions="Center"   
-                    Text="COORDENADAS PIEZA"   
-                    VerticalOptions="EndAndExpand" 
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Text="COORDENADAS PIEZA"
+                    VerticalOptions="EndAndExpand"
                     WidthRequest="130"
-                >
-                </Button>
-                <Button      
+                    Margin="0,0,0,10">
+                    </Button>
+                    <Button
                     Grid.Row="0"
                     Grid.Column="1"
                     BackgroundColor="DarkGreen"
                     Command="{Binding CoordObjCommand}"
                     CornerRadius="60"
-                    HeightRequest="60"
+                    HeightRequest="50"
                     BorderColor="White"
                     TextColor="White"
-                    BorderWidth="3"  
-                    FontSize="12"
+                    BorderWidth="3"
+                    FontSize="Micro"
                     FontFamily="{StaticResource BlackOpsOne}"
-                    HorizontalOptions="Center"   
-                    Text="COORDENADAS OBJETIVO"   
-                    VerticalOptions="EndAndExpand" 
-                    WidthRequest="130">
-                </Button>
-                <Button      
-                    Grid.Row="1"
-                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    Text="COORDENADAS OBJETIVO"
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="130"
+                     Margin="0,0,0,10">
+                    </Button>
+                    <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
                     BackgroundColor="DarkGreen"
                     Command="{Binding DerivaVCommand}"
-                    CornerRadius="60" 
+                    CornerRadius="60"
                     BorderColor="White"
                     TextColor="White"
-                    BorderWidth="3" 
-                    FontSize="12"
-                    FontFamily="{StaticResource BlackOpsOne}" 
-                    HeightRequest="60"
-                    HorizontalOptions="Center"   
-                    Text="DERIVA VIGILANCIA"   
-                    VerticalOptions="EndAndExpand" 
-                    WidthRequest="130">
-                </Button>
-                <Button      
+                    BorderWidth="3"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Text="LÍNEA REFERENCIA"
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="130"
+                    Margin="0,0,0,10">
+                    </Button>
+                    <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    IsEnabled="{Binding IsEnableCalcular}"
+                    IsVisible="{Binding IsNotEnableCalcular}"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3"
+                    FontSize="Small"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Text="CALCULAR"
+                    WidthRequest="150"
+                    Margin="0,0,0,5">
+                    </Button>
+                    <Button
                     Grid.Row="1"
                     Grid.Column="1"
                     BackgroundColor="DarkGreen"
                     Command="{Binding CalcularCommand}"
+                    IsEnabled="{Binding IsEnableCalcular}"
+                    IsVisible="{Binding IsEnableCalcular}"
                     CornerRadius="60"
                     BorderColor="White"
                     TextColor="White"
-                    BorderWidth="3" 
-                    FontSize="12"
+                    BorderWidth="3"
+                    FontSize="Small"
                     FontFamily="{StaticResource BlackOpsOne}"
-                    HeightRequest="60"
-                    HorizontalOptions="Center"   
-                    Text="CALCULAR"   
-                    WidthRequest="130">
-                </Button>
-            </Grid>
-            <Button      
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Text="CALCULAR"
+                    WidthRequest="150"
+                    Margin="0,0,0,5">
+                    </Button>
+                    <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    IsEnabled="{Binding IsEnableCorreccion}"
+                    IsVisible="{Binding IsNotEnableCorreccion}"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Text="CORRECCIÓN VIENTO"
+                    WidthRequest="130"
+                    Margin="0,0,0,0">
+                    </Button>
+                    <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding CorregirViento}"
+                    IsEnabled="{Binding IsEnableCorreccion}"
+                    IsVisible="{Binding IsEnableCorreccion}"
+                    CornerRadius="60"
+                    BorderColor="White"
+                    TextColor="White"
+                    BorderWidth="3"
+                    FontSize="Micro"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Text="CORRECCIÓN VIENTO"
+                    WidthRequest="130"
+                    Margin="0,0,0,0">
+                    </Button>
+                    <Grid
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Margin="50,0,0,0">
+                        <Button
+                        BackgroundColor="DarkGreen"
+                        FontFamily="{StaticResource BlackOpsOne}"
+                        Command="{Binding AyudaViento}"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        BorderColor="White"
+                        TextColor="White"
+                        FontSize="Small"
+                        BorderWidth="2"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="?" />
+                    </Grid>
+                </Grid>
+                <Button
                 BackgroundColor="DarkGreen"
                 Command="{Binding Guardar}"
                 CornerRadius="60"
                 BorderColor="White"
                 TextColor="White"
-                BorderWidth="3" 
-                FontSize="12"
+                BorderWidth="3"
+                FontSize="Micro"
                 FontFamily="{StaticResource BlackOpsOne}"
-                IsVisible="{Binding IsVisible, Mode=TwoWay}"
-                HeightRequest="60"
-                HorizontalOptions="CenterAndExpand"   
-                Text="GUARDAR DATOS"   
-                WidthRequest="130">
-            </Button>
-            <!-- TODO: Añadir botón "Correción Viento" -> Binding con la función "CorregirViento" de "DatosViewModel.cs" -->
-        </StackLayout>
-    </ScrollView>
+                HeightRequest="50"
+                HorizontalOptions="CenterAndExpand"
+                Text="GUARDAR DATOS"
+                WidthRequest="140"
+                Clicked="AvisoGuardar">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+        <!-- Cartel superpuesto -->
+        <Frame BackgroundColor="#CC000000"
+           Padding="10"
+           CornerRadius="10"
+           HorizontalOptions="Center"
+           VerticalOptions="Start"
+           IsVisible="{Binding Datos.MostrarAyudaDeclinacion}"
+           Margin="30,60,30,0"
+           HasShadow="True">
+            <Label Text="Declinación UTM en milésimas. Puede ser negativa. Introducir '0' si el ángulo a la referencia se ha obtenido mediante plano, sin brújula."
+               TextColor="White"
+               FontSize="Small"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+        </Frame>
+    </Grid>
 </ContentPage>

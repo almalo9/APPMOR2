@@ -1,61 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net.Sockets;
+
 //Esta GpsViewModel permite obtener las coordenadas propias
 namespace APPMOR2.MainViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using MainViewModels;
-    using System.Linq.Expressions;
-    using System.Net;
-    using System.Threading;
     using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Xamarin.Essentials;
     using Xamarin.Forms;
-    using static APPMOR2.MainViewModels.MainViewModel;
 
-    public class GpsViewModel:BaseViewModel
+    public class GpsViewModel : BaseViewModel
     {
         #region Attributes
         private string ejeX;
-        private string ejeY;
-        private string ejeZ;
+        private bool coordenadasVistas = false;
         public Coordenadas Posicion;
 
-
-        #endregion
+        #endregion Attributes
         #region Properties
-        public string EjeX 
+
+        public string EjeX
         {
             get { return this.ejeX; }
             set { SetValue(ref this.ejeX, value); }
         }
-        public string EjeY
+
+        public bool CoordenadasVistas
         {
-            get { return this.ejeY; }
-            set { SetValue(ref this.ejeY, value); }
+            get { return this.coordenadasVistas; }
+            set { SetValue(ref this.coordenadasVistas, value); }
         }
-        public string EjeZ
+
+        public bool CoordenadasNoVistas
         {
-            get { return this.ejeZ; }
-            set { SetValue(ref this.ejeZ, value); }
+            get { return !this.coordenadasVistas; }
         }
-        #endregion
+
+        #endregion Properties
         #region Constructors
+
         public GpsViewModel()
         {
             Posicion = new Coordenadas(0, 0, 0);
         }
 
-        #endregion
+        #endregion Constructors
         #region Commands
         #region Posicion
+
         public ICommand LocationCommand
         {
             get { return new RelayCommand(Location); }
         }
-        async private void Location()
+
+        private async void Location()
         {
             var request = new GeolocationRequest(GeolocationAccuracy.Medium);
             try
@@ -64,11 +61,10 @@ namespace APPMOR2.MainViewModels
 
                 if (location != null)
                 {
-                    Coordenadas Posicion = new Coordenadas(location.Longitude, location.Latitude, Convert.ToDouble(location.Altitude));
+                    this.Posicion = new Coordenadas(location.Longitude, location.Latitude, Convert.ToDouble(location.Altitude));
                     Posicion.latLongToWGS84();
-                    this.EjeX = "X: " + Posicion.getX();
-                    this.EjeY = "Y: " + Posicion.getY();
-                    this.EjeZ = "Z: " + Posicion.getZ();
+                    this.EjeX = "X: " + Posicion.getX() + "\nY: " + Posicion.getY() + "\nZ: " + Posicion.getZ();
+                    this.CoordenadasVistas = true;
                 }
             }
             catch (FeatureNotSupportedException fnsEx)
@@ -94,9 +90,8 @@ namespace APPMOR2.MainViewModels
                         await Application.Current.MainPage.DisplayAlert("Error", "Se han obtenido las coordenadas de su última ubicación porque no hay cobertura GPS en este momento.", "Cancelar");
                         Posicion = new Coordenadas(location.Longitude, location.Latitude, Convert.ToDouble(location.Altitude));
                         Posicion.latLongToWGS84();
-                        this.EjeX = "X: " + Posicion.getX();
-                        this.EjeY = "Y: " + Posicion.getY();
-                        this.EjeZ = "Z: " + Posicion.getZ();
+                        this.EjeX = "X: " + Posicion.getX() + "\nY: " + Posicion.getY() + "\nZ: " + Posicion.getZ();
+                        this.CoordenadasVistas = true;
                     }
                 }
                 catch (Exception exc)
@@ -104,9 +99,54 @@ namespace APPMOR2.MainViewModels
                     this.EjeX = "No hemos podido obtener su ubicación ni obtener ninguna última ubicación.";
                 }
             }
-
         }
-        #endregion
+
+        public ICommand EstablecerPieza
+        {
+            get { return new RelayCommand(GuardarPieza); }
+        }
+
+        public async void GuardarPieza()
+        {
+            try
+            {
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Datos.UnidadBase.setCoordenada(this.Posicion);
+                mainViewModel.Datos.IsVisiblePieza = true;
+                mainViewModel.Datos.MostrarPieza();
+
+                mainViewModel.State.SelectedUnidad.setCoordenada(this.Posicion);
+                mainViewModel.State.MostrarUnidad();
+
+                mainViewModel.Datos.IsVisibleDatosTiro = false;
+                mainViewModel.Datos.IsVisibleViento = false;
+                mainViewModel.Datos.UnidadBase.EstaCorregido = false;
+                mainViewModel.Datos.IsEnableCorreccion = false;
+            }
+            catch
+            { await Application.Current.MainPage.DisplayAlert("Error", "No hay unidades seleccionadas", "Aceptar"); }
+        }
+
+        public ICommand EstablecerObservador
+        {
+            get { return new RelayCommand(GuardarObservador); }
+        }
+
+        public async void GuardarObservador()
+        {
+            try
+            {
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Observador.CoordenadaObservador = this.Posicion;
+                mainViewModel.Observador.CoordenadaVisible = true;
+                mainViewModel.Observador.MostrarObservador();
+                mainViewModel.Observador.Visible = false;
+            }
+            catch
+            { await Application.Current.MainPage.DisplayAlert("Error", "Ha habido un error inesperado", "Aceptar"); }
+        }
+
+        #endregion Posicion
         /*#region Enviar
         public ICommand EnviarCommand
         {
@@ -120,8 +160,7 @@ namespace APPMOR2.MainViewModels
              string datay = "Y" + Posicion.getY();
              string dataz = "Z" + Posicion.getY();
              string dataname = "N" + mainViewModel.State.Usuario.getNombre();
-             
-            
+
             string direccion = await Application.Current.MainPage.DisplayPromptAsync("Envío de datos", "Introduzca a quien quiere mandar los datos", initialValue: "", keyboard: Keyboard.Text);
             for (int i = 0; i == mainViewModel.State.iPClient.Length; i++)
             {
@@ -150,14 +189,11 @@ namespace APPMOR2.MainViewModels
                     }
                     catch
                     { await Application.Current.MainPage.DisplayAlert("Envio", "Se ha producido un error en el envío", "Aceptar"); }
-
                 }
             }
-            
         }
-        #endregion
+        #endregion Commands
         */
         #endregion
-
     }
 }

@@ -1,10 +1,5 @@
-﻿using APPMOR2.MainViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System;
+using APPMOR2.MainViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Shapes;
 using Xamarin.Forms.Xaml;
@@ -22,6 +17,7 @@ namespace APPMOR2.View
         public Point radial = new Point(250, 250);
         public const int radio = 150;
         public const int radioPieza = 2;
+
         public DibujoPage()
         {
             InitializeComponent();
@@ -35,8 +31,6 @@ namespace APPMOR2.View
             myGeometryGroup.Children.Add(circulo);
             myGeometryGroup.Children.Add(pieza);
             geo.Data = myGeometryGroup;
-
-            
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -54,9 +48,9 @@ namespace APPMOR2.View
             try
             {
                 double prop = 150.00 / mainViewModel.Datos.SelectedTipo.getDistMax();
-                int x = 150 + (int)Math.Round((mainViewModel.Datos.UnidadBase.getObjetivo().getX()- mainViewModel.Datos.UnidadBase.getCoordenadas().getX()) * prop);
-                int y =150 + (int)Math.Round((mainViewModel.Datos.UnidadBase.getObjetivo().getY() - mainViewModel.Datos.UnidadBase.getCoordenadas().getY()) * prop);
-                Point punto = new Point(x,y);
+                int x = 150 + (int)Math.Round((mainViewModel.Datos.UnidadBase.getObjetivo().getX() - mainViewModel.Datos.UnidadBase.getCoordenadas().getX()) * prop);
+                int y = 150 + (int)Math.Round((mainViewModel.Datos.UnidadBase.getObjetivo().getY() - mainViewModel.Datos.UnidadBase.getCoordenadas().getY()) * prop);
+                Point punto = new Point(x, y);
                 LineGeometry newLine = new LineGeometry(centro, punto);
                 EllipseGeometry newEllipse = new EllipseGeometry(punto, 2, 2);
                 myGeometryGroup.Children.Add(newLine);
@@ -65,10 +59,8 @@ namespace APPMOR2.View
             }
             catch
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "No se han calculado datos de tiro", "Cancel");
+                await Application.Current.MainPage.DisplayAlert("Error", "No se han calculado datos de tiro", "Cancelar");
             }
-            
-
         }
 
         private void Button_Clicked_1(object sender, EventArgs e)

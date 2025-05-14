@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="APPMOR2.View.MeteoPage"
+             BackgroundImage="background">
+
+    <Grid>
+
+        <ScrollView Grid.Row="0">
+            <StackLayout Padding="20">
+                <!-- Título -->
+                <Label Text="BOLETÍN METEOROLÓGICO"
+               FontSize="Medium"
+               TextColor="White"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+                <Grid RowSpacing="1">
+                    <Label Grid.Column="0" Grid.Row="0" Text="Ubicación:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+                    <Label Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Ubicacion, Mode=TwoWay}" TextColor="White" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Fecha:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+                    <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Fecha, Mode=TwoWay}" TextColor="White" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+
+                    <Label Grid.Column="0" Grid.Row="2" Text="Validez:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+                    <Label Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Validez, Mode=TwoWay}" TextColor="White" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+
+                    <Label Grid.Column="0" Grid.Row="3" Text="Convergencia:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+                    <Label Grid.Column="1" Grid.Row="3" Text="{Binding Convergencia, Mode=TwoWay}" TextColor="White" FontAttributes="Bold" FontSize="Small" HorizontalOptions="Center" IsVisible="{Binding NoEditable}" Margin="0,15,0,10" />
+
+                    <Label Grid.Column="0" Grid.Row="4" Text="Datos:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding NoEditable}" Margin="0,15,0,0" />
+                </Grid>
+
+                <Grid HorizontalOptions="Center" RowSpacing="5" IsVisible="{Binding NoEditable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="{Binding Capa01}" Grid.Row="0" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa02}" Grid.Row="1" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa03}" Grid.Row="2" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa04}" Grid.Row="3" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa05}" Grid.Row="4" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa06}" Grid.Row="5" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                    <Label Text="{Binding Capa07}" Grid.Row="6" TextColor="White" FontSize="Small" FontAttributes="Bold" CharacterSpacing="1" />
+                </Grid>
+
+                <!-- COSAS EDITAR -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Text="Ubicación:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding Editable}" VerticalOptions="Center" Margin="0,0,0,5" />
+                    <Entry Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Ubicacion, Mode=TwoWay}" FontSize="Small" TextColor="White" IsVisible="{Binding Editable}" Placeholder="Introduce la ubicación" PlaceholderColor="Gray" VerticalOptions="Center" Margin="0,0,0,5" />
+
+                    <Label Grid.Column="0" Grid.Row="1" Text="Fecha:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding Editable}" VerticalOptions="Center" Margin="0,0,0,5" />
+                    <Entry Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Fecha, Mode=TwoWay}" FontSize="Small" TextColor="White" IsVisible="{Binding Editable}" Placeholder="Introduce la fecha" PlaceholderColor="Gray" VerticalOptions="Center" Margin="0,0,0,5" />
+
+                    <Label Grid.Column="0" Grid.Row="2" Text="Validez:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding Editable}" VerticalOptions="Center" Margin="0,0,0,5" />
+                    <Entry Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Validez, Mode=TwoWay}" FontSize="Small" TextColor="White" IsVisible="{Binding Editable}" Placeholder="Introduce la validez" PlaceholderColor="Gray" VerticalOptions="Center" Margin="0,0,0,5" />
+
+                    <Label Grid.Column="0" Grid.Row="3" Text="Convergencia:" TextColor="White" FontAttributes="Bold" FontSize="Small" IsVisible="{Binding Editable}" VerticalOptions="Center" Margin="0,0,0,10" />
+                    <Entry Grid.Column="1" Grid.Row="3" Text="{Binding Convergencia, Mode=TwoWay}" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"  IsVisible="{Binding Editable}" Keyboard="Numeric" MaxLength="3" Placeholder="Introduce la convergenica" PlaceholderColor="Gray" VerticalOptions="Center" Margin="0,0,0,10" />
+                </Grid>
+
+                <!-- Tabla de datos (Valores y Entradas) -->
+                <Grid HorizontalOptions="Center" ColumnSpacing="6" IsVisible="{Binding Editable}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Encabezado de la tabla -->
+                    <Label Grid.Row="0" Grid.Column="0" Text="Altura" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="Capa" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="0" Grid.Column="2" Text="Azimut" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="0" Grid.Column="3" Text="Nudos" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White" FontSize="Small" />
+
+                    <!-- Filas con valores fijos y Entrys -->
+                    <Label Grid.Row="1" Grid.Column="0" Text="200 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="01" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="1" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[0].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="1" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[0].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="500 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="02" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="2" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[1].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="2" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[1].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="1000 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="03" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="3" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[2].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="3" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[2].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="1500 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="04" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="4" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[3].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="4" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[3].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="2000 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="05" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="5" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[4].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="5" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[4].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="3000 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="6" Grid.Column="1" Text="06" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="6" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[5].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="6" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[5].Nudos, Mode=TwoWay}" />
+
+                    <Label Grid.Row="7" Grid.Column="0" Text="4000 m" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Label Grid.Row="7" Grid.Column="1" Text="07" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" FontSize="Small" />
+                    <Entry Grid.Row="7" Grid.Column="2" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[6].Azimut, Mode=TwoWay}" />
+                    <Entry Grid.Row="7" Grid.Column="3" Keyboard="Numeric" MaxLength="2" TextColor="White" FontSize="Small" HorizontalTextAlignment="Center"
+                   Text="{Binding DatosMeteoLista[6].Nudos, Mode=TwoWay}" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid VerticalOptions="End" Margin="0,0,0,15">
+            <!-- Botones -->
+            <Button Grid.Row="0"
+                Text="EDITAR"
+                BackgroundColor="DarkGreen"
+                CornerRadius="60"
+                BorderColor="White"
+                BorderWidth="3"
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="140"
+                Margin="0,0,0,1"
+                TextColor="White"
+                Command="{Binding Editar}"
+                IsVisible="{Binding PuedeEditar}" />
+
+            <Button Grid.Row="1"
+                Text="GUARDAR"
+                BackgroundColor="DarkGreen"
+                CornerRadius="60"
+                BorderColor="White"
+                BorderWidth="3"
+                FontSize="Small"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="140"
+                Margin="0,0,0,1"
+                TextColor="White"
+                Command="{Binding Guardar}"
+                IsVisible="{Binding PuedeGuardar}"
+                Clicked="AvisoGuardar" />
+
+            <Button Grid.Row="1"
+                Text="NUEVO BOLETÍN METEOROLÓGICO"
+                BackgroundColor="DarkRed"
+                CornerRadius="60"
+                BorderColor="White"
+                BorderWidth="3"
+                FontSize="Micro"
+                FontFamily="{StaticResource BlackOpsOne}"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand"
+                WidthRequest="180"
+                TextColor="White"
+                Command="{Binding NuevoBoletin}"
+                IsVisible="{Binding NoEditable}">
+            </Button>
+        </Grid>
+    </Grid>
+</ContentPage>

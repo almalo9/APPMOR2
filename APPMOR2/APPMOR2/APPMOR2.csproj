@@ -3,28 +3,35 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <Company>Ignacio Ovidio Munoz Nicolas</Company>
+    <Company></Company>
     <Copyright>Ignacio Ovidio Munoz Nicolás</Copyright>
     <Description>Calculadora de Morteros</Description>
     <PackageIcon>launcher_foreground.png</PackageIcon>
     <NeutralLanguage>es-ES</NeutralLanguage>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.1.0</FileVersion>
+    <PackageId>APPMOR3</PackageId>
+    <Product>APPMOR3</Product>
+    <Authors>MUÑOZ &amp; MAGÁN</Authors>
+    <Version>3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Fonts\AngulosTiro2.xlsx" />
     <None Remove="Fonts\BlackOpsOne.ttf" />
+    <None Remove="Fonts\ComponentesViento.xlsx" />
     <None Remove="Fonts\glyphicons-halflings-regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Fonts\AngulosTiro2.xlsx" />
+    <EmbeddedResource Include="Fonts\ComponentesViento.xlsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,9 +44,14 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.1" />
+    <PackageReference Include="SQLite" Version="3.13.0" />
+    <PackageReference Include="sqlite-net" Version="1.6.292" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
     <PackageReference Include="Syncfusion.Xamarin.XlsIO" Version="20.3.0.57" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
@@ -49,6 +61,11 @@
       <HintPath>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+<ItemGroup>
+  <AndroidResource Include="Resources\drawable\background.png" />
+  <AndroidResource Include="Resources\drawable\emblema.png" />
+</ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="View\DatosPage.xaml">
@@ -67,6 +84,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\MeteoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ObservadorPage.xaml">

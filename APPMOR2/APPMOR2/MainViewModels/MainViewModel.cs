@@ -1,20 +1,9 @@
-﻿using Syncfusion.XlsIO;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Sockets;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-namespace APPMOR2.MainViewModels
+﻿namespace APPMOR2.MainViewModels
 {
-
     public class MainViewModel
     {
-        #region Properties
-        #endregion
         #region ViewModels
+
         public InicioViewModel Inicio { get; set; }
         public MenuViewModel Menu { get; set; }
         public DatosViewModel Datos { get; set; }
@@ -23,16 +12,25 @@ namespace APPMOR2.MainViewModels
         public ObservadorViewModel Observador { get; set; }
         public StateViewModel State { get; set; }
         public DibujoViewModel Dibujo { get; set; }
-        #endregion
+        public MeteoViewModel Meteo { get; set; }
+
+        #endregion ViewModels
+
         #region Constructors
+
         public MainViewModel()
         {
             instance = this;
             this.Inicio = new InicioViewModel();
+            this.Meteo = new MeteoViewModel();
         }
-        #endregion
+
+        #endregion Constructors
+
         #region Singleton
+
         private static MainViewModel instance;
+
         public static MainViewModel GetInstance()
         {
             if (instance == null)
@@ -41,7 +39,7 @@ namespace APPMOR2.MainViewModels
             }
             return instance;
         }
-        #endregion
 
+        #endregion Singleton
     }
 }
