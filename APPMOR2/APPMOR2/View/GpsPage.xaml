@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="APPMOR2.View.GpsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
@@ -12,47 +12,122 @@
              IconImageSource="Gps36">
     <ContentPage.Content>
         <StackLayout
-            BindingContext="{Binding Gps}"
-            VerticalOptions="Center">
-            <Label 
+            BindingContext="{Binding Gps}">
+            <Label
+                Margin="0,200,0,0"
                 Text="SU POSICIÓN GPS EN WGS 84 ES:"
                 FontFamily="{StaticResource BlackOpsOne}"
+                FontSize="Small"
                 TextColor="White"
-                VerticalOptions="Center" 
+                VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand" />
-            <Label 
+            <Label
+                Margin="0,10"
+                FontAttributes="Bold"
+                FontSize="Small"
                 Text="{Binding EjeX, Mode=TwoWay}"
                 TextColor="White"
-                VerticalOptions="Center" 
+                VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand" />
-            <Label 
-                Text="{Binding EjeY, Mode=TwoWay}"
-                TextColor="White"
-                VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label 
-                Text="{Binding EjeZ, Mode=TwoWay}"
-                TextColor="White"
-                VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button      
+            <Grid
+                Margin="20,0">
+                <Button
+                Margin="0,5"
                 Grid.Row="0"
-                Grid.Column="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 BackgroundColor="DarkGreen"
                 Command="{Binding LocationCommand}"
                 CornerRadius="40"
-                HeightRequest="40"
+                HeightRequest="55"
                 BorderColor="White"
                 TextColor="White"
-                BorderWidth="3" 
+                BorderWidth="3"
                 FontSize="Small"
                 FontFamily="{StaticResource BlackOpsOne}"
-                HorizontalOptions="Center"   
-                Text="VER COORDENADAS"   
+                HorizontalOptions="Center"
+                Text="VER COORDENADAS"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="200"
-                MinimumHeightRequest="70">
-            </Button>
+                MinimumHeightRequest="60">
+                </Button>
+                <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="Micro"
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontAttributes="Bold"
+                IsEnabled="{Binding CoordenadasVistas}"
+                IsVisible="{Binding CoordenadasNoVistas}"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="40"
+                BorderColor="White"
+                BorderWidth="3"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                Text="ESTABLECER POSICIÓN PIEZA"
+                VerticalOptions="Start"
+                Clicked="AvisoPieza" />
+                <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                FontSize="Micro"
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontAttributes="Bold"
+                BackgroundColor="DarkGreen"
+                Command="{Binding EstablecerPieza}"
+                IsEnabled="{Binding CoordenadasVistas}"
+                IsVisible="{Binding CoordenadasVistas}"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="40"
+                BorderColor="White"
+                BorderWidth="3"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                Text="ESTABLECER POSICIÓN PIEZA"
+                VerticalOptions="Start"
+                Clicked="AvisoPieza" />
+                <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                FontSize="Micro"
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontAttributes="Bold"
+                IsEnabled="{Binding CoordenadasVistas}"
+                IsVisible="{Binding CoordenadasNoVistas}"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="40"
+                BorderColor="White"
+                BorderWidth="3"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                Text="ESTABLECER POSICIÓN OBSERVADOR"
+                VerticalOptions="Start"
+                Clicked="AvisoObservador" />
+                <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                FontSize="Micro"
+                FontFamily="{StaticResource BlackOpsOne}"
+                FontAttributes="Bold"
+                BackgroundColor="DarkGreen"
+                Command="{Binding EstablecerObservador}"
+                IsEnabled="{Binding CoordenadasVistas}"
+                IsVisible="{Binding CoordenadasVistas}"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="40"
+                BorderColor="White"
+                BorderWidth="3"
+                TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                Text="ESTABLECER POSICIÓN OBSERVADOR"
+                VerticalOptions="Start"
+                Clicked="AvisoObservador" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

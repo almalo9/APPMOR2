@@ -1,102 +1,51 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Webkit;
-using Android.Widget;
-using APPMOR2.Droid;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+using Android.Content.Res;
+using APPMOR2.Droid;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using static APPMOR2.Infraestructure.Interfaces;
 
-[assembly: Xamarin.Forms.Dependency(typeof(FileViewer))]
+[assembly: Dependency(typeof(FileViewer))]
+
 namespace APPMOR2.Droid
 {
-    public class FileViewer:IFileViewer
+    public class FileViewer : IFileViewer
     {
         public async void ShowPDFTXTFromLocal(string filename)
         {
-            
-            string storageDir = Android.App.Application.Context.GetExternalFilesDir(null).AbsolutePath;
-            string dir = "APPMOR2.Fonts.Help.pdf";
-            Assembly assembly = typeof(App).GetTypeInfo().Assembly;
-            Stream str = assembly.GetManifestResourceStream(dir);
-            string pathFile = Path.Combine(storageDir, "Help.pdf");
-            FileStream file = File.Create(pathFile);
-            if (File.Exists(pathFile))
+            try
             {
-                
-                MemoryStream ms = new MemoryStream();
-                str.CopyTo(ms);
-                await file.WriteAsync(ms.ToArray(),0,ms.ToArray().Length);
+                // Obtener la ruta de almacenamiento externa
+                string storageDir = Android.App.Application.Context.GetExternalFilesDir(null).AbsolutePath;
 
+                // Acceder al AssetManager para obtener el archivo desde los Assets
+                AssetManager assetManager = Android.App.Application.Context.Assets;
 
+                // Crear la ruta de destino donde el archivo PDF será copiado
+                string filePath = Path.Combine(storageDir, filename);
+
+                // Verifica si el archivo ya existe, si no, lo copia desde los assets
+                if (!File.Exists(filePath))
+                {
+                    using (Stream assetStream = assetManager.Open(filename))
+                    using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await assetStream.CopyToAsync(fileStream);
+                    }
+                }
+
+                // Abrir el archivo PDF con la aplicación predeterminada del dispositivo
                 await Launcher.OpenAsync(new OpenFileRequest
                 {
-                    File = new ReadOnlyFile(pathFile)
+                    File = new ReadOnlyFile(filePath)
                 });
             }
-            else
+            catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("not ok");
+                // Manejo de excepciones
+                System.Diagnostics.Debug.WriteLine($"Error al abrir el PDF: {ex.Message}");
             }
-
-
-
-            //System.Diagnostics.Debug.WriteLine(assembly.GetManifestResourceNames());
-
-            //string dirPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.;
-            //System.Diagnostics.Debug.WriteLine(dirPath);
-            //System.Diagnostics.Debug.WriteLine(Path.Combine(dirPath, "Help.pdf"));
-            // string dir = "/storage/emulated/0/Android/Download/Help.pdf";
-            //var assetManager = Android.App.Application.Context.Assets.Open(filename);
-            //FileStream file = File.Create(dir);
-            //MemoryStream ms = new MemoryStream();
-            //assetManager.CopyTo(ms);
-            //file.Write(ms.ToArray(),0,ms.ToArray().Length);
-            //System.Diagnostics.Debug.WriteLine(assetManager.ToString());
-            //var file = new Java.IO.File(Android.App.Application.Context.Assets.Open("Hepl.pdf"));
-            //var str = assetManager.Open("Help.pdf");
-            //System.Diagnostics.Debug.WriteLine(assetManager.ToString());
-
-            //string path = Android.Net.Uri.Parse("file:///android_asset/Help.pdf").ToString();
-            //System.Diagnostics.Debug.WriteLine(path);
-            /*string dest = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "Help.pdf");
-            System.Diagnostics.Debug.WriteLine(str.ToString());
-            var file = new Java.IO.File("android_asset/Help.pdf");
-            
-            if (file.Exists())
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    var uri = Android.Net.Uri.FromFile(file);
-                    Intent intent = new Intent(Intent.ActionView);
-                    var mimetype = MimeTypeMap.Singleton.GetMimeTypeFromExtension(MimeTypeMap.GetFileExtensionFromUrl((string)uri).ToLower());
-                    intent.SetDataAndType(uri, mimetype);
-                    intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
-
-                    try
-                    {
-                        Android.App.Application.Context.StartActivity(intent);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    }
-                });
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("file not found");
-            }*/
         }
     }
 }

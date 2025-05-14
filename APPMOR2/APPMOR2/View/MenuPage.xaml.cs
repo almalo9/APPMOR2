@@ -1,11 +1,4 @@
-﻿using APPMOR2.MainViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace APPMOR2.View
@@ -16,7 +9,6 @@ namespace APPMOR2.View
         public MenuPage()
         {
             InitializeComponent();
-           
         }
     }
 }

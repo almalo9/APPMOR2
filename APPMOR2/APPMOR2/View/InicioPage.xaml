@@ -4,71 +4,85 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="APPMOR2.View.InicioPage" 
-             BackgroundImage="imageInicio"
-             BindingContext="{Binding Main, Source= {StaticResource Locator}}" 
+             x:Class="APPMOR2.View.InicioPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              NavigationPage.HasNavigationBar="False"
-             NavigationPage.HasBackButton="True"
-             >
+             NavigationPage.HasBackButton="True">
+
     <ContentPage.Content>
-        <StackLayout
-            BindingContext="{Binding Inicio}"
-            Padding="0,20"
-            VerticalOptions="Fill"
-            HorizontalOptions="Center">
-            <Label
+        <Grid>
+            <!-- Imagen de fondo (se estira para cubrir toda la pantalla) -->
+            <Image Source="background"
+                   Aspect="Fill"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Imagen centrada encima (mantiene su proporción y está en el centro) -->
+            <Image Source="emblema"
+                   Aspect="AspectFit"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Margin="20,0,20,50" />
+
+            <!-- Contenido original -->
+            <StackLayout
+                BindingContext="{Binding Inicio}"
+                Padding="0,20"
+                VerticalOptions="Fill"
+                HorizontalOptions="Center">
+
+                <Label
                     FontSize="Large"
                     FontFamily="{StaticResource BlackOpsOne}"
                     HeightRequest="50"
-                    HorizontalOptions="Center"   
-                    Text="APPMOR 2.0"   
+                    HorizontalOptions="Center"
+                    Text="APPMOR 3.0"
                     TextColor="White"
-                    VerticalOptions="Center">
-            </Label>
-            <Button                
-                BackgroundColor="DarkGreen"
-                Command="{Binding EmpezarCommand}"
-                CornerRadius="40" 
-                FontSize="Body"
-                FontAttributes="None"
-                FontFamily="{StaticResource BlackOpsOne}"
-                HeightRequest="40"
-                HorizontalOptions="Center"   
-                Text="Empezar"
-                BorderColor="White"
-                BorderWidth="3"
-                Opacity=".75"
-                TextColor="White"
-                VerticalOptions="EndAndExpand" 
-                WidthRequest="130">
-            </Button>
-            <Grid 
-                  HorizontalOptions="Center"
-                  VerticalOptions="End"
-                    >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HorizontalOptions="End"
-                    Source="princesa"
-                    TranslationX="-30"
-                    WidthRequest="50">
-                </Image>
-                <Label
-                    FontAttributes="Bold"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="Start"
-                    Text="BIP Princesa I/2"
+                    VerticalOptions="Center" />
+
+                <Button
+                    BackgroundColor="DarkGreen"
+                    Command="{Binding EmpezarCommand}"
+                    CornerRadius="40"
+                    FontSize="Body"
+                    FontAttributes="None"
+                    FontFamily="{StaticResource BlackOpsOne}"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    Text="Empezar"
+                    BorderColor="White"
+                    BorderWidth="3"
                     TextColor="White"
-                    TranslationX="-5"
-                    VerticalOptions="Center">
-                </Label>
-            </Grid>
-        </StackLayout>
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="130" />
+
+                <Grid
+                    HorizontalOptions="Center"
+                    VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="End"
+                        Source="princesa"
+                        TranslationX="-30"
+                        WidthRequest="50"
+                        Opacity="0" />
+                    <Label
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        Text="BIP Princesa I/2"
+                        TextColor="White"
+                        TranslationX="-5"
+                        VerticalOptions="Center"
+                        Opacity="0" />
+                </Grid>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +11,16 @@ namespace APPMOR2.View
         public GpsPage()
         {
             InitializeComponent();
+        }
+
+        public async void AvisoPieza(object sender, EventArgs e)
+        {
+            await this.DisplayToastAsync("Se han establecido las coordenadas de la Pieza", 4000);
+        }
+
+        public async void AvisoObservador(object sender, EventArgs e)
+        {
+            await this.DisplayToastAsync("Se han establecido las coordenadas del Observador", 4000);
         }
     }
 }

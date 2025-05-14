@@ -1,17 +1,12 @@
 ﻿using Xamarin.Forms;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms.Shapes;
-using System.Linq;
 
 namespace APPMOR2.MainViewModels
 {
-    public class DibujoViewModel:BaseViewModel
+    public class DibujoViewModel : BaseViewModel
     {
         #region attributes
+
         public Path myPath { get; set; }
         public GeometryGroup myGeometryGroup { get; set; }
         public Point puntoInicioAbcisas = new Point(0, 150);
@@ -22,7 +17,9 @@ namespace APPMOR2.MainViewModels
         public Point radial = new Point(250, 250);
         public const int radio = 150;
         public const int radioPieza = 2;
-        #endregion
+
+        #endregion attributes
+
         #region Properties
 
         /*public Point PuntoFin
@@ -30,9 +27,12 @@ namespace APPMOR2.MainViewModels
             get { return this.puntoFin; }
             set { SetValue(ref this.puntoFin, value); }
         }*/
-        #endregion
+
+        #endregion Properties
+
         #region Constructors
-        public DibujoViewModel() 
+
+        public DibujoViewModel()
         {
             /*myGeometryGroup = new GeometryGroup();
             LineGeometry abcisas = new LineGeometry(puntoInicioAbcisas, puntoFinAbcisas);
@@ -45,13 +45,13 @@ namespace APPMOR2.MainViewModels
             myGeometryGroup.Children.Add(circulo);
             myGeometryGroup.Children.Add(pieza);
             //myGeometryGroup.Children.Add(vidaExtra);*/
-
         }
 
-        #endregion
+        #endregion Constructors
+
         #region Commands
 
-        public void addGeometry(int a, int b) 
+        public void addGeometry(int a, int b)
         {
             //Point puntoI = new Point(0, 0);
             Point puntoF = new Point(150, 150);
@@ -61,10 +61,10 @@ namespace APPMOR2.MainViewModels
             //int index=myGeometryGroup.Children.IndexOf(vidaExtra);
             /*Point p = new Point(200, 200);
             LineGeometry newLine = new LineGeometry(centro, p);
-            
-            this.myGeometryGroup.Children.Add(newLine);*/
 
+            this.myGeometryGroup.Children.Add(newLine);*/
         }
-        #endregion
+
+        #endregion Commands
     }
 }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="APPMOR2.View.InstruccionPage"
              BackgroundImage="background"
@@ -17,56 +17,73 @@
             VerticalOptions="FillAndExpand">
             <StackLayout
                 VerticalOptions="StartAndExpand">
-                <Label 
+                <Label
                 Padding="0,0,0,50"
-                FontSize="Large"
+                FontSize="Medium"
                 FontFamily="{StaticResource BlackOpsOne}"
                 HorizontalOptions="CenterAndExpand"
                 Text="INSTRUCCIÓN"
                 TextColor="White"
-                VerticalOptions="Start" 
-                 />
+                VerticalOptions="Start" />
                 <Entry
                 Placeholder="Introduzca Coordenada X del Objetivo"
                 PlaceholderColor="White"
                 Keyboard="Numeric"
+                FontSize="Medium"
                 Text="{Binding CoordX, Mode=TwoWay}"
                 TextColor="White"
-                MaxLength="5"
-                />
+                MaxLength="5" />
                 <Entry
                 Placeholder="Introduzca Coordenada Y del Objetivo"
                 PlaceholderColor="White"
                 Keyboard="Numeric"
+                FontSize="Medium"
                 Text="{Binding CoordY, Mode=TwoWay}"
                 TextColor="White"
-                MaxLength="5"
-                />
+                MaxLength="5" />
                 <Button
+                    Margin="0,10"
                 BackgroundColor="DarkGreen"
                 FontFamily="{StaticResource BlackOpsOne}"
                 Command="{Binding InstruccionCalcular}"
                 CornerRadius="40"
-                HeightRequest="40"
+                HeightRequest="50"
                 BorderColor="White"
                 TextColor="White"
-                BorderWidth="3" 
+                BorderWidth="3"
                 HorizontalOptions="Center"
-                Text="CALCULAR"
+                Text="GENERAR IMPACTO"
                 WidthRequest="150"
-                />
-                <Label 
+                FontSize="Small" />
+                <Label
                 Padding="0,30"
                 FontSize="Default"
                 HorizontalOptions="CenterAndExpand"
                 Text="{Binding InstruccionCoordenadas, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
                 TextColor="White"
-                VerticalOptions="Start" 
-                 />
+                VerticalOptions="Start" />
             </StackLayout>
             <StackLayout
                 VerticalOptions="End">
-                <Button
+                <Grid>
+                    <Button
+                Grid.Column="0"
+                BackgroundColor="DarkGreen"
+                FontFamily="{StaticResource BlackOpsOne}"
+                Command="{Binding PaginaMeteo}"
+                CornerRadius="40"
+                HeightRequest="40"
+                BorderColor="White"
+                TextColor="White"
+                BorderWidth="3"
+                VerticalOptions="End"
+                HorizontalOptions="Start"
+                Text="DATOS VIENTO"
+                WidthRequest="150"
+                FontSize="Small" />
+                    <Button
+                Grid.Column="1"
                 BackgroundColor="DarkGreen"
                 FontFamily="{StaticResource BlackOpsOne}"
                 Command="{Binding Help}"
@@ -74,12 +91,13 @@
                 HeightRequest="40"
                 BorderColor="White"
                 TextColor="White"
-                BorderWidth="3" 
+                BorderWidth="3"
                 VerticalOptions="End"
                 HorizontalOptions="End"
                 Text="Ayuda"
-                WidthRequest="80"
-                />
+                FontSize="Small"
+                WidthRequest="80" />
+                </Grid>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
